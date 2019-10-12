@@ -19,4 +19,8 @@ const array = [2, 56, 23, 88, 17, 4];
 const Numbersgreaterthan15 = array.filter(array => array>15);
 console.log(Numbersgreaterthan15)
 
+const array2 = [2, 5, 8, 10];
+const result =(numbers)=> numbers.map(number => number*number);
+console.log(result(array2));
+
 export default MyApp
