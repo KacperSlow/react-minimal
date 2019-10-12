@@ -11,5 +11,6 @@ const MyApp = () => (
 )
 const generateArray = (n) =>Array.from(Array(n), (x,index)=>index+1)
 console.log(generateArray(30))
-
+const generateRandomArray = (n) => Array.from(Array(n), (x,index)=>(Math.floor(Math.random() * Math.floor(25))+1))
+console.log(generateRandomArray(10))
 export default MyApp
