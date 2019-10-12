@@ -11,6 +11,12 @@ const MyApp = () => (
 )
 const generateArray = (n) =>Array.from(Array(n), (x,index)=>index+1)
 console.log(generateArray(30))
+
 const generateRandomArray = (n) => Array.from(Array(n), (x,index)=>(Math.floor(Math.random() * Math.floor(25))+1))
 console.log(generateRandomArray(10))
+
+const array = [2, 56, 23, 88, 17, 4];
+const Numbersgreaterthan15 = array.filter(array => array>15);
+console.log(Numbersgreaterthan15)
+
 export default MyApp
