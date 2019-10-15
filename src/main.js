@@ -4,3 +4,4 @@ import MyApp from './MyApp'
 
 
 render(<MyApp />, document.getElementById('reactinjectedhere'))
+//render(<MyApp />, document.getElementById('StudentsList'))
