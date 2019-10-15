@@ -13,7 +13,7 @@ const MyApp = () => (
         <button onClick={AllStudents}>All students</button>
         <button onClick={SortStudents}>Sort students</button>
         <button >Old students</button>
-      </div>
+      </div> 
   </div>
 )
 const generateArray = (n) =>Array.from(Array(n), (x,index)=>index+1)
@@ -107,4 +107,7 @@ function SortStudents() {
   })
   document.getElementById("StudentsList").innerHTML = studL.sort()
 }
+
+
+
 export default MyApp
