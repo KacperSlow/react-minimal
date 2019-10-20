@@ -11,7 +11,7 @@ class NumberForm extends React.Component {
       this.counter = 0;
       this.handleNumberAChanged = this.handleNumberAChanged.bind(this)
       this.handleNumberBChanged = this.handleNumberBChanged.bind(this)
-      
+      this.handleProcess = this.handleProcess.bind(this);
     }
     handleNumberAChanged = (event) =>{
         this.setState({[event.target.name]: event.target.value})
@@ -41,7 +41,12 @@ class NumberForm extends React.Component {
         }
         console.log('Value chnage ' + event.target.name + ': ' + event.target.value)
     }
-    generateArray = (n,p) =>Array.from(Array(n), (v,index)=>index+p)
+    handleProcess = (event) =>{
+        event.preventDefault();        
+        this.setState({x: this.result(this.state.x)})
+    }
+    generateArray = (n,p) =>Array.from(Array(n), (v,index)=>index+p);
+    result =(numbers)=> numbers.map(number => Math.sqrt(number));
        
     render() { 
         this.counter++;
@@ -52,12 +57,9 @@ class NumberForm extends React.Component {
             <input type="number" name="b" value={this.state.b} placeholder="0" onChange={this.handleNumberBChanged}/>
             <h1>{this.state.x.toString()}</h1>
             {console.timeEnd("render - " + this.counter +" - ")}
+            <button onClick={this.handleProcess}>Process Array</button>
         </form>        
-        )
-        
-        
-        
-    }
-    
+        )               
+    }    
 }   
 export default NumberForm
