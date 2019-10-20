@@ -8,37 +8,56 @@ class NumberForm extends React.Component {
           b:"" ,
           x:[]
         };
-      this.handleNumberChanged = this.handleNumberChanged.bind(this)
+      this.counter = 0;
+      this.handleNumberAChanged = this.handleNumberAChanged.bind(this)
+      this.handleNumberBChanged = this.handleNumberBChanged.bind(this)
+      
     }
-
-    handleNumberChanged = (event) =>{
-        this.setState({[event.target.name]: event.target.value})        
-        console.log('Value chnage ' + event.target.name + ': ' + event.target.value)
-    }
-    generateArray = (n,p) =>Array.from(Array(n), (v,index)=>index+p);
-    
-    ArrayFunction =() =>{
-        let tmpa = parseInt(this.state.a,10)
+    handleNumberAChanged = (event) =>{
+        this.setState({[event.target.name]: event.target.value})
+        let tmpa = parseInt(event.target.value,10)
         let tmpb = parseInt(this.state.b,10) 
         if(tmpa>0 && tmpa<tmpb)
         {
-            const w = this.generateArray(tmpb-tmpa+1,tmpa)
-            return w;
+            this.setState({x:this.generateArray(tmpb-tmpa+1,tmpa)})  
         }
         else
         {
-            return [];
+            this.setState({x:[]})
         }
+        console.log('Value chnage ' + event.target.name + ': ' + event.target.value)
     }
-    render() {
-        let array = this.ArrayFunction()
+    handleNumberBChanged = (event) =>{
+        this.setState({[event.target.name]: event.target.value})
+        let tmpa = parseInt(this.state.a,10)
+        let tmpb = parseInt(event.target.value,10) 
+        if(tmpa>0 && tmpa<tmpb)
+        {
+            this.setState({x:this.generateArray(tmpb-tmpa+1,tmpa)})  
+        }
+        else
+        {
+            this.setState({x:[]})
+        }
+        console.log('Value chnage ' + event.target.name + ': ' + event.target.value)
+    }
+    generateArray = (n,p) =>Array.from(Array(n), (v,index)=>index+p)
+       
+    render() { 
+        this.counter++;
         return (               
         <form >
-            <input type="number" name="a" value={this.state.a} placeholder="0" onChange={this.handleNumberChanged} />
-            <input type="number" name="b" value={this.state.b} placeholder="0" onChange={this.handleNumberChanged}/>
-            <h1>{array}</h1>
-        </form>
+            {console.time("render - " + this.counter +" - ")}
+            <input type="number" name="a" value={this.state.a} placeholder="0" onChange={this.handleNumberAChanged}/>
+            <input type="number" name="b" value={this.state.b} placeholder="0" onChange={this.handleNumberBChanged}/>
+            <h1>{this.state.x.toString()}</h1>
+            {console.timeEnd("render - " + this.counter +" - ")}
+        </form>        
         )
+        
+        
+        
     }
+    
 }   
 export default NumberForm

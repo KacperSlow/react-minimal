@@ -5,4 +5,6 @@ import NumberForm from './Lab2'
 
 
 render(<MyApp />, document.getElementById('reactinjectedhere'))
+console.time("Time")
 render(<NumberForm />, document.getElementById('InputNumbers'))
+console.timeEnd("Time")
